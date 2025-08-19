@@ -1,0 +1,14 @@
+node_modules/
+Logs/
+package-lock.json
+
+# Dependency directories
+/node_modules/
+
+# Dependency directories
+
+/uploads/
+
+# Compiled output
+/dist/
+/build/

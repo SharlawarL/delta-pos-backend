@@ -1,0 +1,2869 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Fleet 360 API documentation",
+        "description": "Crud operations",
+        "version": "1.0.0"
+    },
+    "host": "localhost:5000",
+    "schemes": "http",
+    "paths": {
+        "/api/auth/login": {
+            "post": {
+                "summary": "Employee Login",
+                "tags": [
+                    "Auth"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Employee",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer data"
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "summary": "Register employee",
+                "tags": [
+                    "Auth"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Employee",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstname": {
+                                    "type": "string"
+                                },
+                                "lastname": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer data"
+                    }
+                }
+            }
+        },
+        "/api/employee/get-employee": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all employee data",
+                "tags": [
+                    "Employee"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee data"
+                    }
+                }
+            }
+        },
+        "/api/employee/get-employee/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all employee data",
+                "tags": [
+                    "Employee"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee data"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ]
+            }
+        },
+        "/api/employee/add-employee": {
+            "post": {
+                "summary": "Add new employee",
+                "tags": [
+                    "Employee"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Employee",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstname": {
+                                    "type": "string"
+                                },
+                                "lastname": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee data"
+                    }
+                }
+            }
+        },
+        "/api/employee/update-password/{id}": {
+            "put": {
+                "summary": "Update Employee Password",
+                "tags": [
+                    "Employee"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Employee",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "password": {
+                                    "type": "string"
+                                },
+                                "confirm_password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee data"
+                    }
+                }
+            }
+        },
+        "/api/employee/update-employee/{id}": {
+            "put": {
+                "summary": "Update Employee data",
+                "tags": [
+                    "Employee"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Employee",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstname": {
+                                    "type": "string"
+                                },
+                                "lastname": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee data"
+                    }
+                }
+            }
+        },
+        "/api/employee/delete-employee/{id}": {
+            "delete": {
+                "summary": "Delete employee data",
+                "tags": [
+                    "Employee"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Employee data"
+                    }
+                }
+            }
+        },
+        "/api/branch-master/get-branch": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all branch data",
+                "tags": [
+                    "Branch"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "branch data"
+                    }
+                }
+            }
+        },
+        "/api/branch-master/add-branch": {
+            "post": {
+                "summary": "Create branch data",
+                "tags": [
+                    "Branch"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "branch",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "branch_name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "branch data"
+                    }
+                }
+            }
+        },
+        "/api/branch-master/update-branch/{id}": {
+            "put": {
+                "summary": "Update branch data",
+                "tags": [
+                    "Branch"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "branch",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "branch_name": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "branch data"
+                    }
+                }
+            }
+        },
+        "/api/branch-master/delete-branch/{id}": {
+            "delete": {
+                "summary": "Delete branch data",
+                "tags": [
+                    "Branch"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "branch data"
+                    }
+                }
+            }
+        },
+        "/api/ClassificationMaster/get-ClassificationMaster": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all branch data",
+                "tags": [
+                    "Classification"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "branch data"
+                    }
+                }
+            }
+        },
+        "/api/ClassificationMaster/ClassificationMaster": {
+            "post": {
+                "summary": "Create ClassificationMaster data",
+                "tags": [
+                    "Classification"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Classification",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "job_classification": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ClassificationMaster data"
+                    }
+                }
+            }
+        },
+        "/api/ClassificationMaster/ClassificationMaster/{id}": {
+            "put": {
+                "summary": "Update ClassificationMaster data",
+                "tags": [
+                    "Classification"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Classification",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "job_classification": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ClassificationMaster data"
+                    }
+                }
+            }
+        },
+        "/api/ClassificationMaster/delete-ClassificationMaster/{id}": {
+            "delete": {
+                "summary": "Delete ClassificationMaster data",
+                "tags": [
+                    "Classification"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ClassificationMaster data"
+                    }
+                }
+            }
+        },
+        "/api/company-master/get-company": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all company data",
+                "tags": [
+                    "company"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "company data"
+                    }
+                }
+            }
+        },
+        "/api/company-master/add-company": {
+            "post": {
+                "summary": "Create company data",
+                "tags": [
+                    "company"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "company",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "company_id": {
+                                    "type": "string"
+                                },
+                                "company_name": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "company data"
+                    }
+                }
+            }
+        },
+        "/api/company-master/update-company/{id}": {
+            "put": {
+                "summary": "Update company data",
+                "tags": [
+                    "company"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "company",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "company_id": {
+                                    "type": "string"
+                                },
+                                "company_name": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "company data"
+                    }
+                }
+            }
+        },
+        "/api/company-master/delete-company/{id}": {
+            "delete": {
+                "summary": "Delete company data",
+                "tags": [
+                    "company"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "company data"
+                    }
+                }
+            }
+        },
+        "/api/customermaster/get-deleteCustomerMaster": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all CustomerMaster data",
+                "tags": [
+                    "Customer"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CustomerMaster data"
+                    }
+                }
+            }
+        },
+        "/api/customermaster/CustomerMaster": {
+            "post": {
+                "summary": "Create CustomerMaster data",
+                "tags": [
+                    "Customer"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Customer",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "remarks": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CustomerMaster data"
+                    }
+                }
+            }
+        },
+        "/api/customermaster/CustomerMaster/{id}": {
+            "put": {
+                "summary": "Update CustomerMaster data",
+                "tags": [
+                    "Customer"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Customer",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "remarks": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CustomerMaster data"
+                    }
+                }
+            }
+        },
+        "/api/customermaster/delete-CustomerMaster/{id}": {
+            "delete": {
+                "summary": "Delete CustomerMaster data",
+                "tags": [
+                    "Customer"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CustomerMaster data"
+                    }
+                }
+            }
+        },
+        "/api/vehicle-master/get-vehicle": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all vehicle data",
+                "tags": [
+                    "Vehicle"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "vehicle data"
+                    }
+                }
+            }
+        },
+        "/api/vehicle-master/get-vehicle-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch vehicle by ID data",
+                "tags": [
+                    "Vehicle"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "vehicle data"
+                    }
+                }
+            }
+        },
+        "/api/vehicle-master/add-vehicle": {
+            "post": {
+                "summary": "Create vehicle data",
+                "tags": [
+                    "Vehicle"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Vehicle",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vehicle data"
+                    }
+                }
+            }
+        },
+        "/api/vehicle-master/update-vehicle/{id}": {
+            "put": {
+                "summary": "Update vehicle data",
+                "tags": [
+                    "Vehicle"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "vehicle",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "VehicleMaster data"
+                    }
+                }
+            }
+        },
+        "/api/vehicle-master/delete-vehicle/{id}": {
+            "delete": {
+                "summary": "Delete Vehicle data",
+                "tags": [
+                    "Vehicle"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vehicle data"
+                    }
+                }
+            }
+        },
+        "/api/dashboard-master/get-dashboard": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all dashboard data",
+                "tags": [
+                    "dashboard"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "dashboard data"
+                    }
+                }
+            }
+        },
+        "/api/dashboard-master/get-dashboard-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch dashboard by ID data",
+                "tags": [
+                    "dashboard"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "dashboard data"
+                    }
+                }
+            }
+        },
+        "/api/dashboard-master/add-dashboard": {
+            "post": {
+                "summary": "Create dashboard data",
+                "tags": [
+                    "dashboard"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "dashboard",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "dashboard data"
+                    }
+                }
+            }
+        },
+        "/api/dashboard-master/update-dashboard/{id}": {
+            "put": {
+                "summary": "Update dashboard data",
+                "tags": [
+                    "dashboard"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "dashboard",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "dashboard data"
+                    }
+                }
+            }
+        },
+        "/api/dashboard-master/delete-dashboard/{id}": {
+            "delete": {
+                "summary": "Delete dashboard data",
+                "tags": [
+                    "dashboard"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "dashboard data"
+                    }
+                }
+            }
+        },
+        "/api/driver-master/get-DriverMaster": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all driver data",
+                "tags": [
+                    "driver"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "driver data"
+                    }
+                }
+            }
+        },
+        "/api/driver-master/get-Driver-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch driver by ID data",
+                "tags": [
+                    "driver"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "driver data"
+                    }
+                }
+            }
+        },
+        "/api/driver-master/add-DriverMaster": {
+            "post": {
+                "summary": "Create driver data",
+                "tags": [
+                    "driver"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "driver",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "mobile": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "dob": {
+                                    "type": "string"
+                                },
+                                "licence_no": {
+                                    "type": "string"
+                                },
+                                "licence_expiry": {
+                                    "type": "string"
+                                },
+                                "exp": {
+                                    "type": "string"
+                                },
+                                "doj": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "remark": {
+                                    "type": "string"
+                                },
+                                "uploadfile": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "driver data"
+                    }
+                }
+            }
+        },
+        "/api/driver-master/update-DriverMaster/{id}": {
+            "put": {
+                "summary": "Update driver data",
+                "tags": [
+                    "driver"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "driver",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "driver data"
+                    }
+                }
+            }
+        },
+        "/api/driver-master/delete-DriverMaster/{id}": {
+            "delete": {
+                "summary": "Delete driver data",
+                "tags": [
+                    "driver"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "driver data"
+                    }
+                }
+            }
+        },
+        "/api/job-master/get-JobMaster": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all job data",
+                "tags": [
+                    "job"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "job data"
+                    }
+                }
+            }
+        },
+        "/api/job-master/get-Job-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch job by ID data",
+                "tags": [
+                    "job"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "job data"
+                    }
+                }
+            }
+        },
+        "/api/job-master/add-JobMaster": {
+            "post": {
+                "summary": "Create job data",
+                "tags": [
+                    "job"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "job",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "job data"
+                    }
+                }
+            }
+        },
+        "/api/job-master/update-JobMaster/{id}": {
+            "put": {
+                "summary": "Update job data",
+                "tags": [
+                    "job"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "job",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "job data"
+                    }
+                }
+            }
+        },
+        "/api/job-master/delete-JobMaster/{id}": {
+            "delete": {
+                "summary": "Delete job data",
+                "tags": [
+                    "job"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "job data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/get-QuotationMaster": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all quotation data",
+                "tags": [
+                    "quotation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/get-Quotation-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch quotation by ID data",
+                "tags": [
+                    "quotation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/add-QuotationMaster": {
+            "post": {
+                "summary": "Create quotation data",
+                "tags": [
+                    "quotation"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "quotation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/update-QuotationMaster/{id}": {
+            "put": {
+                "summary": "Update quotation data",
+                "tags": [
+                    "quotation"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "quotation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reg_no": {
+                                    "type": "string"
+                                },
+                                "v_name": {
+                                    "type": "string"
+                                },
+                                "model": {
+                                    "type": "string"
+                                },
+                                "mfd_by": {
+                                    "type": "string"
+                                },
+                                "chassis_no": {
+                                    "type": "string"
+                                },
+                                "engine_no": {
+                                    "type": "string"
+                                },
+                                "v_type": {
+                                    "type": "string"
+                                },
+                                "v_color": {
+                                    "type": "string"
+                                },
+                                "reg_expiry": {
+                                    "type": "string"
+                                },
+                                "v_group": {
+                                    "type": "string"
+                                },
+                                "engine_type": {
+                                    "type": "string"
+                                },
+                                "mileage": {
+                                    "type": "string"
+                                },
+                                "init_road_km": {
+                                    "type": "string"
+                                },
+                                "device_id": {
+                                    "type": "string"
+                                },
+                                "gps_api": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/delete-QuotationMaster/{id}": {
+            "delete": {
+                "summary": "Delete quotation data",
+                "tags": [
+                    "quotation"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/get-QuotationItem": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all quotation Product data",
+                "tags": [
+                    "quotation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation product data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/add-quotationItem": {
+            "post": {
+                "summary": "Add new quotation item",
+                "tags": [
+                    "quotation"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Quotation",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "item_type": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "category": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/update-quotationItem/{id}": {
+            "put": {
+                "summary": "Update Quotation data",
+                "tags": [
+                    "quotation"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "driver",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "item_type": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                },
+                                "category": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Quotation data"
+                    }
+                }
+            }
+        },
+        "/api/quotation/delete-quotationItem/{id}": {
+            "delete": {
+                "summary": "Delete quotation product data",
+                "tags": [
+                    "quotation"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation product data"
+                    }
+                }
+            }
+        },
+        "/api/voucher-master/get-VoucherMaster": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all voucher data",
+                "tags": [
+                    "voucher"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "voucher data"
+                    }
+                }
+            }
+        },
+        "/api/report/get-quotation-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                ],
+                "summary": "Fetch all get-quotation-report",
+                "tags": [
+                    "reports"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Driver Trip End data"
+                    }
+                }
+            }
+        },
+        "/api/report/get-job-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch get-job-report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Driver Trip End data"
+                    }
+                }
+            }
+        },
+        "/api/report/get-invoice-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all get-invoice-report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Driver Trip End data"
+                    }
+                }
+            }
+        },
+        "/api/report/get-driver-trip-end-status-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all Driver Trip End Report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Driver Trip End data"
+                    }
+                }
+            }
+        },
+        "/api/report/get-quotation-status-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all quotation Status Report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "quotation Status data"
+                    }
+                }
+            }
+        },
+        "/api/report/get-numbers-driver-job-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all numbers of driver job report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "numbers of driver job data"
+                    }
+                },
+        
+        "/api/report/get-Job-Status-Report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all Job Status Report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Job Status Report data"
+                    }
+                }
+            }
+        },
+
+        "/api/report/get-numbers-of-job-done-by-employee-report": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all number of job done by employee report",
+                "tags": [
+                    "reports"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "fromdate",
+                        "type": "text"
+                    },
+                    {
+                        "in": "query",
+                        "name": "todate",
+                        "type": "text"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "number of job done by employee data"
+                    }
+                }
+            }
+        }  
+        
+            },
+            "securityDefinitions": {
+                "bearerAuth": {
+                    "type": "apiKey",
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\""
+                }
+            }
+        },
+        "/api/companynew/get-companynew": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all CompanyNew data",
+                "tags": [
+                    "CompanyNew"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompanyNew data"
+                    }
+                }
+            }
+        },
+        "/api/companynew/get-companynew-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch CompanyNew by ID data",
+                "tags": [
+                    "CompanyNew"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompanyNew data"
+                    }
+                }
+            }
+        },
+        "/api/companynew/add-companynew": {
+            "post": {
+                "summary": "Create CompanyNew data",
+                "tags": [
+                    "CompanyNew"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "CompanyNewv",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "shipper": {
+                                    "type": "string"
+                                },
+                                "consignee": {
+                                    "type": "string"
+                                },
+                                "deliver_to": {
+                                    "type": "string"
+                                },
+                                "bill_to": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "postal_code": {
+                                    "type": "string"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "phone_no": {
+                                    "type": "string"
+                                },
+                                "fax_no": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompanyNew data"
+                    }
+                }
+            }
+        },
+        "/api/companynew/update-companynew/{id}": {
+            "put": {
+                "summary": "Update CompanyNew data",
+                "tags": [
+                    "CompanyNew"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "CompanyNew",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "shipper": {
+                                    "type": "string"
+                                },
+                                "consignee": {
+                                    "type": "string"
+                                },
+                                "deliver_to": {
+                                    "type": "string"
+                                },
+                                "bill_to": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "postal_code": {
+                                    "type": "string"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "phone_no": {
+                                    "type": "string"
+                                },
+                                "fax_no": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompanyNew data"
+                    }
+                }
+            }
+        },
+        "/api/companynew/delete-companynew/{id}": {
+            "delete": {
+                "summary": "Delete CompanyNew data",
+                "tags": [
+                    "CompanyNew"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "CompanyNew data"
+                    }
+                }
+            }
+        },
+        "/api/truck-master/get-truck-master": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all Truck Master data",
+                "tags": [
+                    "Truck Master"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Master data"
+                    }
+                }
+            }
+        },
+        "/api/truck-master/get-truck-master-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch Truck Master by ID data",
+                "tags": [
+                    "Truck Master"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Master data"
+                    }
+                }
+            }
+        },
+        "/api/truck-master/add-truck-master": {
+            "post": {
+                "summary": "Create Truck Master data",
+                "tags": [
+                    "Truck Master"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Truck Master",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "truck_no": {
+                                    "type": "string"
+                                },
+                                "created_by": {
+                                    "type": "string"
+                                },
+                                "created_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                },
+                                "updated_by": {
+                                    "type": "string"
+                                },
+                                "updated_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Master data"
+                    }
+                }
+            }
+        },
+        "/api/truck-master/update-truck-master/{id}": {
+            "put": {
+                "summary": "Update Truck Master data",
+                "tags": [
+                    "Truck Master"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Truck Master",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "truck_no": {
+                                    "type": "string"
+                                },
+                                "created_by": {
+                                    "type": "string"
+                                },
+                                "created_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                },
+                                "updated_by": {
+                                    "type": "string"
+                                },
+                                "updated_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                },
+                                "status": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Master data"
+                    }
+                }
+            }
+        },
+        "/api/truck-master/delete-truck-master/{id}": {
+            "delete": {
+                "summary": "Delete Truck Master data",
+                "tags": [
+                    "Truck Master"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Master data"
+                    }
+                }
+            }
+        },
+        "/api/truck-qnt/get-truck-qnt": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Fetch all Truck Quantity data",
+                "tags": [
+                    "Truck Quantity"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Quantity data"
+                    }
+                }
+            }
+        },
+        "/api/truck-qnt/get-truck-qnt-by-id/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "summary": "Fetch Truck Quantity by ID data",
+                "tags": [
+                    "Truck Quantity"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Quantity data"
+                    }
+                }
+            }
+        },
+        "/api/truck-qnt/add-truck-qnt": {
+            "post": {
+                "summary": "Create Truck Quantity data",
+                "tags": [
+                    "Truck Quantity"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Truck Quantity",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "unit": {
+                                    "type": "string"
+                                },
+                                "created_by": {
+                                    "type": "string"
+                                },
+                                "created_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                },
+                                "updated_by": {
+                                    "type": "string"
+                                },
+                                "updated_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Master data"
+                    }
+                }
+            }
+        },
+        "/api/truck-qnt/update-truck-qnt/{id}": {
+            "put": {
+                "summary": "Update Truck Quantity data",
+                "tags": [
+                    "Truck Quantity"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "Truck Quantity",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "unit": {
+                                    "type": "string"
+                                },
+                                "created_by": {
+                                    "type": "string"
+                                },
+                                "created_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                },
+                                "updated_by": {
+                                    "type": "string"
+                                },
+                                "updated_on": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Date and time in yyyy:mm:dd hh:mm:ss format"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Quantity data"
+                    }
+                }
+            }
+        },
+        "/api/truck-qnt/delete-truck-qnt/{id}": {
+            "delete": {
+                "summary": "Delete Truck Quantity data",
+                "tags": [
+                    "Truck Quantity"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Truck Quantity data"
+                    }
+                }
+            }
+        }
+
+    }
+    
+}
