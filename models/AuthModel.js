@@ -7,7 +7,7 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             try {
                 // data fetch from employee table
-                const sql = "SELECT e.*, bs.id as branch_id,bs.name as branch_name FROM employees e left join branch_master bs on e.branch = bs.id where e.email='" + params.email + "' ";
+                const sql = "SELECT e.*, bs.id as branch_id,bs.name as branch_name FROM tbl_setting_employees e left join branch_master bs on e.branch = bs.id where e.email='" + params.email + "' ";
 
                 let result = await db.queryData(sql);
 
@@ -28,10 +28,10 @@ module.exports = {
                 let keys = Object.keys(params);
                 let values = Object.values(params);
 
-                const sql = "INSERT into employees(" + keys.join(",") + ") values ('" + values.join("','") + "') ";
+                const sql = "INSERT into tbl_setting_employees(" + keys.join(",") + ") values ('" + values.join("','") + "') ";
 
 
-                // const sql = "INSERT into employees (firstname, lastname, mobile, email, password, status, branch) values('" + params.firstname + "', '" + params.lastname + "', '" + params.mobile + "', '" + params.email + "', '" + encPass + "', 'active', '" + params.branch + "')";
+                // const sql = "INSERT into tbl_setting_employees (firstname, lastname, mobile, email, password, status, branch) values('" + params.firstname + "', '" + params.lastname + "', '" + params.mobile + "', '" + params.email + "', '" + encPass + "', 'active', '" + params.branch + "')";
 
                 let result = await db.queryData(sql);
 

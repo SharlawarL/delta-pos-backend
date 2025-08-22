@@ -90,7 +90,7 @@ module.exports = {
     getnumberofjobdonebyemployeereport: (params) => {
         return new Promise(async (resolve, reject) => {
             try {
-                const sql ="SELECT e.id, e.firstname, e.lastname, count(*) as cnt FROM employees e left join job j on j.created_by=e.id where j.trip_status='End Trip' and j.created_date between '2024-09-01' and '2024-09-28'group by e.id";
+                const sql ="SELECT e.id, e.firstname, e.lastname, count(*) as cnt FROM tbl_setting_employees e left join job j on j.created_by=e.id where j.trip_status='End Trip' and j.created_date between '2024-09-01' and '2024-09-28'group by e.id";
 
                 let result = await db.queryData(sql);
 
