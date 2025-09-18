@@ -1,4 +1,4 @@
-const model = require('../models/CategoryModel');
+const model = require('../models/PosCategoryModel');
 const moment = require('moment');
 
 function sendResponse(res, status, message, data = []) {
@@ -19,7 +19,6 @@ module.exports = {
             return sendResponse(res, 500, err.message || "Database error");
         }
     },
-
     getById: async (req, res) => {
         try {
             const id = req.params.id;

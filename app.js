@@ -26,10 +26,9 @@ const EmailRout = require('./routes/EmailRout')
 const PaymodeRout = require('./routes/PaymodeRout')
 const AccountRout = require('./routes/AccountRout')
 
-const CategoryRout = require('./routes/CategoryRout')
-
-// Controller
-const NotificationController = require('./controllers/NotificationController');
+const PosCategoryRout = require('./routes/PosCategoryRout')
+const PosMenuItemsRout = require('./routes/PosMenuItemsRout')
+const PosIngredientsRout = require('./routes/PosIngredientsRout')
 
 const app = express();
 
@@ -100,7 +99,6 @@ const activitycapture = async (req, res, next) => {
     try {
         req.io = io
         req.body.user_id = req?.user_data?.id
-        // let result = await NotificationController.addMaster(req, res);
 
         next();
     } catch (err) {
@@ -123,7 +121,9 @@ app.use('/api/company-master', activitycapture, authenticateJWT, companyMasterRo
 app.use('/api/paymode-master', authenticateJWT, activitycapture, PaymodeRout);
 app.use('/api/account-master', authenticateJWT, activitycapture, AccountRout);
 
-app.use('/api/category', authenticateJWT, activitycapture, CategoryRout);
+app.use('/api/category', authenticateJWT, activitycapture, PosCategoryRout);
+app.use('/api/menu-items', authenticateJWT, activitycapture, PosMenuItemsRout);
+app.use('/api/ingredients', authenticateJWT, activitycapture, PosIngredientsRout);
 
 app.listen(5012, () => {
     logger.info('Server listening on port 5012');
