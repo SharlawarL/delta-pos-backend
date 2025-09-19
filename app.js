@@ -26,6 +26,8 @@ const EmailRout = require('./routes/EmailRout')
 const PaymodeRout = require('./routes/PaymodeRout')
 const AccountRout = require('./routes/AccountRout')
 
+const SupplierRout = require('./routes/SupplierRout')
+
 const PosCategoryRout = require('./routes/PosCategoryRout')
 const PosMenuItemsRout = require('./routes/PosMenuItemsRout')
 const PosIngredientsRout = require('./routes/PosIngredientsRout')
@@ -120,6 +122,8 @@ app.use('/api/company-master', activitycapture, authenticateJWT, companyMasterRo
 
 app.use('/api/paymode-master', authenticateJWT, activitycapture, PaymodeRout);
 app.use('/api/account-master', authenticateJWT, activitycapture, AccountRout);
+
+app.use('/api/supplier', authenticateJWT, activitycapture, SupplierRout);
 
 app.use('/api/category', authenticateJWT, activitycapture, PosCategoryRout);
 app.use('/api/menu-items', authenticateJWT, activitycapture, PosMenuItemsRout);
