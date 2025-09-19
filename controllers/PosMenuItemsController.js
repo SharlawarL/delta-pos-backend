@@ -25,6 +25,8 @@ module.exports = {
         try {
             const id = req.params.id;
             const result = await model.getById(id);
+            const recipes = await model.getRecipesById(id);
+            
 
             let data = {};
             if(result.length > 0)
@@ -32,6 +34,7 @@ module.exports = {
                 data["status"] = 200;
                 data["message"] = "Menu Items data by ID";
                 data["data"] = result[0];
+                data["recipes"] = recipes
 
                 res.status(200).json(data);
             } else {
@@ -163,5 +166,38 @@ module.exports = {
         } catch (err) {
             return sendResponse(res, 500, err.message || "Database error");
         }
-    }
+    },
+    addRecipesMaster: async (req, res) => {
+        try {
+
+            const id = req.params.id;
+            const recipes = req.body.recipes;
+
+            let recipesData = JSON.parse(recipes);
+
+            let deleteRes = await model.deleteRecipesMaster(id);
+
+            let responce = false;
+            recipesData.forEach(async(element) => {
+
+                let params = {
+                    menu_item_id: mysql.escape(id),
+                    ingredient_id : mysql.escape(element.in_id),
+                    quantity : mysql.escape(element.quntity)
+                }
+                responce = await model.addRecipesMaster(params);
+            })
+            
+            let data = {};
+
+            data["status"] = 200;
+            data["message"] = "Menu Recipe record created successfully";
+            data["data"] = [];
+
+            res.status(200).json(data);
+
+        } catch (err) {
+            return sendResponse(res, 500, err.message || "Database error");
+        }
+    },
 };

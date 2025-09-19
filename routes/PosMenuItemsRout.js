@@ -26,6 +26,9 @@ const upload = multer({ storage: storage });
 router.get('/get-list', controller.getMaster);
 router.get('/get-by-id/:id', controller.getById);
 router.post('/add', upload.single('file'), controller.addMaster);
+
+router.post('/add-recipes/:id', controller.addRecipesMaster);
+
 router.put('/update/:id', upload.single('file'), controller.updateMaster);
 router.delete('/delete/:id', controller.deleteMaster);
 

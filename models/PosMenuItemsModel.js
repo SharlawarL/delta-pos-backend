@@ -45,6 +45,7 @@ module.exports = {
             }
         });
     },
+    
 
     addMaster:async (params) => {
         return new Promise(async (resolve, reject) => {
@@ -99,5 +100,55 @@ module.exports = {
                 reject(error)
             }
         });
-    }
+    },
+    deleteRecipesMaster: (id) => {
+        return new Promise(async(resolve, reject) => {
+            try {
+                const sql = `DELETE FROM tbl_pos_recipes WHERE menu_item_id='${id}' `;
+
+                let result = await db.queryData(sql);
+                return resolve(result)
+            } catch (error) {
+                console.log("Error :", error)
+                reject(error)
+            }
+        });
+    },
+    addRecipesMaster:async (params) => {
+        return new Promise(async (resolve, reject) => {
+            try {
+                let keys = Object.keys(params);
+                let values = Object.values(params);
+
+                const sql = "INSERT into tbl_pos_recipes(" + keys.join(",") + ") values (" + values.join(",") + ") ";
+
+                let result = await db.queryData(sql);
+
+                return resolve(result)
+            } catch (error) {
+                console.log("Error :", error)
+                reject(error)
+            }
+        });
+    },
+    getRecipesById: (id) => {
+        return new Promise(async(resolve, reject) => {
+            try {
+                // data fetch from customers table
+                const sql = `SELECT 
+                    tpi.id, tpi.menu_code, tpi.name, tpi.unit, tpi.current_stock, tpi.reorder_level, tpi.cost_per_unit, tpr.quantity
+                    FROM tbl_pos_recipes as tpr
+                    left join tbl_pos_ingredients as tpi on tpi.id = tpr.ingredient_id 
+                    where tpr.menu_item_id='${id}' 
+                `;
+
+                let result = await db.queryData(sql);
+
+                resolve(result)
+            } catch (error) {
+                console.log("Error :", error)
+                reject(error)
+            }
+        });
+    },
 };
