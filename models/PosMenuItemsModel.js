@@ -16,6 +16,26 @@ module.exports = {
 
                 let result = await db.queryData(sql);
 
+                const sqlItems = `
+                   SELECT 
+                    tpr.menu_item_id,tpi.id, tpi.menu_code, tpi.name, tpi.unit, tpi.current_stock, tpi.reorder_level, tpi.cost_per_unit, tpr.quantity
+                    FROM tbl_pos_recipes as tpr
+                    left join tbl_pos_ingredients as tpi on tpi.id = tpr.ingredient_id 
+                    order by id desc
+                `;
+
+                let resultItems = await db.queryData(sqlItems);
+
+                result.forEach(element => {
+                    element.recipes = [];
+
+                    resultItems.forEach(item => {
+                        if(element.id == item.menu_item_id){
+                            element.recipes.push(item)
+                        }
+                    })
+                });
+
                 resolve(result)
             } catch (error) {
                 console.log("Error :", error)

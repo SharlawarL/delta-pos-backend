@@ -32,6 +32,8 @@ const PosCategoryRout = require('./routes/PosCategoryRout')
 const PosMenuItemsRout = require('./routes/PosMenuItemsRout')
 const PosIngredientsRout = require('./routes/PosIngredientsRout')
 
+const PurchaseOrderRout = require('./routes/PurchaseOrderRout')
+
 const app = express();
 
 app.use(cors())
@@ -128,6 +130,8 @@ app.use('/api/supplier', authenticateJWT, activitycapture, SupplierRout);
 app.use('/api/category', authenticateJWT, activitycapture, PosCategoryRout);
 app.use('/api/menu-items', authenticateJWT, activitycapture, PosMenuItemsRout);
 app.use('/api/ingredients', authenticateJWT, activitycapture, PosIngredientsRout);
+
+app.use('/api/purchase-order', authenticateJWT, activitycapture, PurchaseOrderRout);
 
 app.listen(5012, () => {
     logger.info('Server listening on port 5012');

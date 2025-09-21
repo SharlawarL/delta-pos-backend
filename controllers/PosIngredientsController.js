@@ -62,25 +62,36 @@ module.exports = {
                 updated_on      : mysql.escape(req.body.created_on || moment().format('YYYY-MM-DD HH:mm:ss'))
             };
             
-            console.log("params", req.body, params)
-
-            let responce = await model.addMaster(params);
             
+            const result = await model.getCheckById(params);
+
             let data = {};
-            if(responce)
-            {
-                data["status"] = 200;
-                data["message"] = "Ingredients record created successfully";
-                data["data"] = [];
+            if(result.length == 0){
+                let responce = await model.addMaster(params);
+            
+                if(responce)
+                {
+                    data["status"] = 200;
+                    data["message"] = "Ingredients record created successfully";
+                    data["data"] = [];
 
-                res.status(200).json(data);
+                    res.status(200).json(data);
+                } else {
+                    data["status"] = 500;
+                    data["message"] = "Samething went wrong!";
+                    data["data"] = [];
+
+                    res.status(500).json(data);
+                }
             } else {
-                data["status"] = 500;
-                data["message"] = "Samething went wrong!";
-                data["data"] = [];
+                    data["status"] = 500;
+                    data["message"] = "Ingredients already exits";
+                    data["data"] = [];
 
-                res.status(500).json(data);
+                    res.status(200).json(data);
             }
+
+            
 
         } catch (err) {
             return sendResponse(res, 500, err.message || "Database error");

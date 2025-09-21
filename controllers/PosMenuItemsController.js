@@ -81,7 +81,7 @@ module.exports = {
             {
                 data["status"] = 200;
                 data["message"] = "Menu Items record created successfully";
-                data["data"] = [];
+                data["data"] = responce;
 
                 res.status(200).json(data);
             } else {
@@ -107,6 +107,7 @@ module.exports = {
                 spanish_name    : mysql.escape(req.body.spanish_name),
                 description     : mysql.escape(req.body.description),
                 price           : mysql.escape(req.body.price),
+                approval_status : mysql.escape(req.body.approval_status),
                 is_active       : mysql.escape(req.body.is_active),
                 updated_by      : mysql.escape(req.body.created_by),
                 updated_on      : mysql.escape(req.body.created_on || moment().format('YYYY-MM-DD HH:mm:ss'))

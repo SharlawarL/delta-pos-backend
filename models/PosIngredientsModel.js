@@ -41,7 +41,25 @@ module.exports = {
             }
         });
     },
+    getCheckById: (params) => {
+        return new Promise(async(resolve, reject) => {
+            try {
+                // data fetch from customers table
+                const sql = `SELECT 
+                    id, name, menu_code,unit, current_stock, reorder_level, cost_per_unit, created_on, created_by, updated_on, updated_by
+                    FROM tbl_pos_ingredients  
+                    where menu_code='${params.menu_code}' or name='${params.name}' 
+                `;
 
+                let result = await db.queryData(sql);
+
+                resolve(result)
+            } catch (error) {
+                console.log("Error :", error)
+                reject(error)
+            }
+        });
+    },
     addMaster:async (params) => {
         return new Promise(async (resolve, reject) => {
             try {
